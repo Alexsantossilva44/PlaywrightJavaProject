@@ -4,24 +4,35 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.raghavpal.PlaywrightJavaProject.base.BaseTest;
+import org.testng.annotations.Test;
 
 /**
  * Autor: Alex Silva
  * Data: 24/04/2026
  */
 
-public class FirstTest {
+public class FirstTest extends BaseTest {
 
-    public static void main(String[] args) {
-
-        try(Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.chromium()
-                    .launch(new BrowserType.LaunchOptions().setHeadless(false));
-            Page page = browser.newPage();
-            page.navigate("https://google.com");
-            System.out.println("The Page Title is :" + page.title());
-            browser.close();
+    @Test
+    public void verifyTitle() {
+        page.navigate("https://google.com/ncr");
+        if (page.isVisible("button:has-text('I agree')")) {
+            page.click("button:has-text('Accept all')");
         }
-
+        System.out.println("The Page Title is :" + page.title());
     }
+
+//    public static void main(String[] args) {
+//
+//        try(Playwright playwright = Playwright.create()) {
+//            Browser browser = playwright.chromium()
+//                    .launch(new BrowserType.LaunchOptions().setHeadless(false));
+//            Page page = browser.newPage();
+//            page.navigate("https://google.com");
+//            System.out.println("The Page Title is :" + page.title());
+//            browser.close();
+//        }
+//
+//    }
 }
