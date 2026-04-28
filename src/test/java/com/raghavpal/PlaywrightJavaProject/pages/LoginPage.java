@@ -34,10 +34,6 @@ public class LoginPage {
                 .click();
     }
 
-    public void navigate() {
-        page.navigate("https://opensource-demo.orangehrmlive.com/");
-    }
-
     // Método que agrupa as ações de login
     public void login(String username, String password) {
         this.addUsername(username);
