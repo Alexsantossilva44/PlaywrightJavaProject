@@ -40,4 +40,8 @@ public class LoginPage {
         this.addPassword(password);
         this.clickLoginButton();
     }
+
+    public void navigate() {
+        page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    }
 }
